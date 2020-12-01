@@ -34,7 +34,6 @@ public class LibraryController {
         bookService.deleteById(book.getId());
     }
 
-
     @GetMapping("/api/categories/{cid}/books")
     public List<Book> listByCategory(@PathVariable("cid") int cid) throws Exception {
         if (0 != cid) {
@@ -43,4 +42,16 @@ public class LibraryController {
             return list();
         }
     }
+
+    @CrossOrigin
+    @GetMapping("/api/search")
+    public List<Book> searchResult(@RequestParam("keywords") String keywords) {
+        // 关键词为空时查询出所有书籍
+        if ("".equals(keywords)) {
+            return bookService.list();
+        } else {
+            return bookService.Search(keywords);
+        }
+    }
+
 }

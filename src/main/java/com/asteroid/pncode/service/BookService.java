@@ -17,25 +17,30 @@ import java.util.List;
 public class BookService {
 
     @Autowired
-    BookDao bookDAO;
+    BookDao bookDao;
 
     @Autowired
     CategoryService categoryService;
 
     public List<Book> list() {
-        return bookDAO.findAll(Sort.by(Sort.Direction.DESC, "id"));
+        return bookDao.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
     public void addOrUpdate(Book book) {
-        bookDAO.save(book);
+        bookDao.save(book);
     }
 
     public void deleteById(int id) {
-        bookDAO.deleteById(id);
+        bookDao.deleteById(id);
     }
 
     public List<Book> listByCategory(int cid) {
         Category category = categoryService.get(cid);
-        return bookDAO.findAllByCategory(category);
+        return bookDao.findAllByCategory(category);
     }
+
+    public List<Book> Search(String keywords) {
+        return bookDao.findAllByTitleLikeOrAuthorLike('%' + keywords + '%', '%' + keywords + '%');
+    }
+
 }
