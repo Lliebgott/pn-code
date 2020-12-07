@@ -8,7 +8,7 @@ import javax.persistence.*;
  * @author YuSai
  */
 @Entity
-@Table(name = "category")
+@Table(name = "t_category")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 public class Category {
 
