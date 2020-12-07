@@ -21,7 +21,14 @@ public class LoginInterceptor implements HandlerInterceptor {
             httpServletResponse.setStatus(HttpStatus.NO_CONTENT.value());
             return true;
         }
+        if (httpServletRequest.getServletPath().equals("/api/covers")) {
+            return true;
+        }
+
         Subject subject = SecurityUtils.getSubject();
+
+        System.out.println(subject.isRemembered());
+        System.out.println(subject.isAuthenticated());
         // 使用 shiro 验证
         if (!subject.isAuthenticated() && !subject.isRemembered()) {
             return false;

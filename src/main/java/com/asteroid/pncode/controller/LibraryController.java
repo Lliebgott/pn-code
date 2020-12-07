@@ -60,7 +60,7 @@ public class LibraryController {
 
     @CrossOrigin
     @PostMapping("api/covers")
-    public String coversUpload(MultipartFile file) {
+    public String covers(MultipartFile file) {
         String folder = "f:/image";
         File imageFolder = new File(folder);
         File f = new File(imageFolder, StringUtils.getRandomString(6) + file.getOriginalFilename()

@@ -7,8 +7,11 @@ import lombok.Data;
  */
 @Data
 public class Result {
+
     private int code;
+
     private String message;
+
     private Object result;
 
     public Result(int code, String message, Object data) {
@@ -16,4 +19,5 @@ public class Result {
         this.message = message;
         this.result = data;
     }
+
 }

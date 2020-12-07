@@ -36,4 +36,5 @@ public class PNRealm extends AuthorizingRealm {
         String salt = user.getSalt();
         return new SimpleAuthenticationInfo(userName, passwordInDB, ByteSource.Util.bytes(salt), getName());
     }
+    
 }
